@@ -48,7 +48,7 @@ class _MyAppState extends State<MyApp> {
       body: Column(
         children: [
           Container(
-            padding: const EdgeInsets.all(30),
+            padding: const EdgeInsets.all(10),
             child: TextField(
               controller: nameController,
               decoration: const InputDecoration(
@@ -59,7 +59,7 @@ class _MyAppState extends State<MyApp> {
             ),
           ),
           Container(
-            padding: const EdgeInsets.all(30),
+            padding: const EdgeInsets.all(10),
             child: TextField(
               controller: numberController,
               decoration: const InputDecoration(
@@ -70,7 +70,7 @@ class _MyAppState extends State<MyApp> {
             ),
           ),
           Container(
-            padding: const EdgeInsets.all(30),
+            padding: const EdgeInsets.all(10),
             child: ElevatedButton.icon(
               onPressed: () {
                 insertdata();
@@ -85,7 +85,7 @@ class _MyAppState extends State<MyApp> {
             height: 20,
           ),
           Container(
-            padding: const EdgeInsets.all(30),
+            padding: const EdgeInsets.all(10),
             child: Builder(
               builder: (context) {
                 return ElevatedButton(
