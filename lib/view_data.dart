@@ -15,7 +15,7 @@ class _view_dataState extends State<view_data> {
   List userdata = [];
 
   Future<void> getrecord() async {
-    String uri = "http://10.0.2.2/database/fet.php";
+    String uri = "http://10.0.2.2/database/fetchapi.php";
 
     try{
       var response = await http.get(Uri.parse(uri));
