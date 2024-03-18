@@ -1,43 +1,16 @@
 <?php
-header('Content-Type: application/json');
-include('dbconnection.php');
 
- $response = array();
- 
- $checkQuery = "SELECT `name`, `number` FROM `demotable`"; // change here.
- $result = mysqli_query($conn,$checkQuery);
- $numrow = mysqli_num_rows($result);
- 
- if($result->num_rows == 0)
- {
-$response["error"] = TRUE;
-$response["message"] = "Sorry no data found.";
-echo json_encode($response);
-exit;
- }
- else
- {
- 
+    include("dbconnection.php");
 
-$data = array();
+    $query = "SELECT `name`, `number` FROM `demotable`";
+    $exe = mysqli_query($conn,$query);
 
-for($i=1;$i<=$numrow;$i++)
-{
-while($val = mysqli_fetch_assoc($result))
-{
+    $arr = [];
 
-$details['name'] = $val['name'];
-$details['number'] = $val['number'];
+    while($row=mysqli_fetch_array($exe)){
+        $arr[] = $row;
+    }
 
-array_push($data,$details);
+    print(json_encode($arr));
 
-}
-}
-$response["smoke"] = $data; // change in response name.
-$response["error"] = FALSE;
-$response["message"] = "Successfully data Found.";
-echo json_encode($response);
-exit;
- }
- 
 ?>
