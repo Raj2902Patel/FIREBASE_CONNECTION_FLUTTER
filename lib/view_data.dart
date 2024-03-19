@@ -14,6 +14,30 @@ class _view_dataState extends State<view_data> {
 
   List userdata = [];
 
+  Future<void> deleterecord(String name) async {
+    try
+    {
+      String uri = "http://10.0.2.2/database/delete_record.php";
+
+      var res = await http.post(Uri.parse(uri), body: {"name":name});
+      var response = await json.decode((res.body));
+      if(response["success"]=="true")
+      {
+        print("Hey There!");
+        getrecord();
+      }
+      else
+        {
+          print("Hey There!");
+          getrecord();
+        }
+    }
+        catch(e)
+        {
+          print(e);
+        }
+  }
+
   Future<void> getrecord() async {
     String uri = "http://10.0.2.2/database/fetchapi.php";
 
@@ -47,7 +71,13 @@ class _view_dataState extends State<view_data> {
             margin: const EdgeInsets.all(10),
             child: ListTile(
               title: Text(userdata[index]["name"]),
-              subtitle: Text(userdata[index]["number"]),
+              subtitle: Text(userdata[index]['number']),
+              trailing: IconButton(
+                onPressed: () {
+                  deleterecord(userdata[index]["name"]);
+                },
+                icon: const Icon(Icons.remove_circle),
+              ),
             ),
           );
         },
