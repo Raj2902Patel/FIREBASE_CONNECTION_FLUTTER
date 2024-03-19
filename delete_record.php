@@ -15,7 +15,7 @@ $arr = [];
 
 if($exe)
 {
-    $arr["Success"] = "true";
+    $arr["success"] = "true";
 }
 else
 {
