@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:database_connection/update_record.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -23,13 +24,12 @@ class _view_dataState extends State<view_data> {
       var response = await json.decode((res.body));
       if(response["success"]=="true")
       {
-        print("Hey There!");
+        print("Record Deleted");
         getrecord();
       }
       else
         {
-          print("Hey There!");
-          getrecord();
+          print("Some Issues");
         }
     }
         catch(e)
@@ -70,6 +70,9 @@ class _view_dataState extends State<view_data> {
           return Card(
             margin: const EdgeInsets.all(10),
             child: ListTile(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => update_record(userdata[index]["name"],userdata[index]["number"])));
+              },
               title: Text(userdata[index]["name"]),
               subtitle: Text(userdata[index]['number']),
               trailing: IconButton(
